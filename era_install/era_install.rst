@@ -39,7 +39,7 @@ Installation
 
    - Select the **Custom Script** check box.
 
-   - In the *Type or paste script* text box, paste the following script, and replace the indicated references (ex. <NETMASK-IP> would be 255.255.255.128).
+   - In the **Type or paste script** text box, paste the following script, and replace the indicated references (ex. <NETMASK-IP> would be 255.255.255.128).
 
       .. code-block:: bash
 
@@ -68,15 +68,15 @@ Configuration
 
 #. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
 
-#. Read the *Nutanix End User License Agreement (EULA) agreement*, click the **I have read and agree to terms and conditions option**, and then click **Continue**.
+#. Read the **Nutanix End User License Agreement (EULA) agreement**, click the **I have read and agree to terms and conditions option**, and then click **Continue**.
 
-#. In the *Nutanix Customer Experience Program* screen, click **OK**.
+#. In the **Nutanix Customer Experience Program** screen, click **OK**.
 
 #. When Prompted on the logon screen, set the cluster password as the password for the administrator user (admin), and click **Set Password**.
 
    - **Password** - *<Cluster Password>*
 
-#. In the *Era’s Cluster* screen, enter the following in the indicated fields:
+#. In the **Era’s Cluster** screen, enter the following in the indicated fields:
 
    - **Name** - EraCluster
    - **Description** - (Optional) Type a description of the Nutanix cluster.
@@ -96,7 +96,7 @@ Configuration
 
     If you do not configure this, remove the e-mail address listed within the *Sender's Email* box.
 
-#. In the *Era Server's OS Time Zone* list, select a timezone, or leave the default UTC.
+#. In the **Era Server's OS Time Zone** list, select a timezone, or leave the default UTC.
 
    .. figure:: images/era2.png
 
@@ -104,13 +104,13 @@ Configuration
 
    .. figure:: images/era3.png
 
-#. In the *Storage Container* screen, select the storage container that you want Era to use to provision new databases and database servers, and click **Next**.
+#. In the **Storage Container** screen, select the storage container that you want Era to use to provision new databases and database servers, and click **Next**.
 
    - **Storage Container** - Era
 
    .. figure:: images/era4.png
 
-#. In the *Network Profile* screen, within the *VLAN* section, select the **Primary** VLAN from the drop-down list, and click **Next**.
+#. In the **Network Profile** screen, within the *VLAN* section, select the **Primary** VLAN from the drop-down list, and click **Next**.
 
    Do NOT check the Manage IP Address Pool
 
@@ -118,11 +118,11 @@ Configuration
 
 #. Click **Get Started**.
 
-    The *Getting Started* page describes how to register and provision databases in Era. You can also open the main menu and start using the product.
+    The **Getting Started** page describes how to register and provision databases in Era. You can also open the main menu and start using the product.
 
    .. figure:: images/era6.png
 
-#. In the *Getting Started* screen, select the **Yes** button.
+#. In the **Getting Started** screen, select the **Yes** button.
 
    .. figure:: images/era7.png
 
@@ -135,24 +135,21 @@ Windows Domain Configuration
 
 #. Click :fa:`plus` **Create**.
 
-#. In the *Create Windows Domain Profile* screen, enter the following in the indicated fields:
+#. In the **Create Windows Domain Profile** screen, enter the following in the indicated fields:
 
    - **Name** NTNXLAB
-
    - **Domain to Join (FQDN)** ntnxlab.local
 
-#. In the *Domain Account with Permission to Join Computer to the Domain* section, enter the following in the indicated fields:
+#. In the **Domain Account with Permission to Join Computer to the Domain** section, enter the following in the indicated fields:
 
    - **Username** ntnxlab.local\\administrators
-
    - **Password** nutanix/4u
 
-#. In the *SQL Service Startup Account* section, deselect **Specify Startup Account in Profile**.
+#. In the **SQL Service Startup Account** section, deselect **Specify Startup Account in Profile**.
 
-#. In the *Era Worker Service Account* section, enter the following in the indicated fields:
+#. In the **Era Worker Service Account** section, enter the following in the indicated fields:
 
    - **Username** ntnxlab.local\\administrators
-
    - **Password** nutanix/4u
 
    .. figure:: images/era15.png
@@ -164,7 +161,7 @@ Windows Domain Configuration
 
 #. Click on the **admin** dropdown at the top right, and choose **Profile**.
 
-#. Set the *Timeout* setting to **Never**. This will help avoid being logged out unexpectedly during your POC.
+#. Set the **Timeout** setting to **Never**. This will help avoid being logged out unexpectedly during your POC.
 
 #. Click **Save**.
 

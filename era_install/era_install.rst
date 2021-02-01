@@ -17,27 +17,23 @@ Installation
 
    Enter the following in the indicated fields.
 
-   - **Name** Era
+   - **Name** - Era
+   - **Description** - (Optional) Description for your VM.
+   - **vCPU(s)** - 4
+   - **Number of Cores per vCPU** - 1
+   - **Memory** - 16 GiB
 
-   - **vCPU(s)** 4
+   - Select **+ Add New Disk**
+       - **Type** - DISK
+       - **Operation** - Clone from Image Service
+       - **Image** - ERA-Server-build-#.#.#.qcow2 (# = Version Number)
+       - Select **Add**
 
-   - **Memory** 16 GiB
+   - Select **Add New NIC**
+       - **VLAN Name** - Primary
+       - Select **Add**
 
-#. Click **Add New Disk**.
-
-   Enter the following in the indicated fields.
-
-   - **Operation** Clone from Image Service.
-
-   - **Image** Select the Era image (ex. Era)
-
-   - Click **Add** to attach the disk to the VM and return to the *Create VM* dialog box.
-
-#. To create a network interface for the VM, click **Add New NIC**.
-
-   -  **VLAN Name** Verify Primary is selected.
-
-   - Click **Add** to create a network interface for the VM and return to the *Create VM* dialog box.
+#. Click **Save** to create the VM.
 
 #. (Optional) If you want to assign a static IP address to the Era VM, perform the following:
 
@@ -55,7 +51,7 @@ Installation
 
 #. Click the **Save** button to create the VM.
 
-#. Right click the Era VM, and select **Power On** to start the VM.
+#.  **Power On** the VM.
 
 #. If you did not set a static IP, determine the IP address assigned to the Era VM from the *IP Addresses* field.
 
@@ -66,33 +62,39 @@ Installation
 Configuration
 +++++++++++++
 
-#. Open `<ERA-VM-IP>` in a new browser tab.
+#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs > List**.
 
-#. Read the *Nutanix End User License Agreement (EULA) agreement*, click the **I have read and agree to terms and conditions option**, and then click **Continue**. In the *Nutanix Customer Experience Program* screen, click **OK**.
+#. Identify the IP address assigned to the **Era** VM using the **IP Addresses** column.
 
-#. Within the logon screen, set a password for the administrator user (admin) in the *Enter new password* and *Re-enter new password* fields, and click **Set Password**.
+#. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
+
+#. Read the *Nutanix End User License Agreement (EULA) agreement*, click the **I have read and agree to terms and conditions option**, and then click **Continue**.
+
+#. In the *Nutanix Customer Experience Program* screen, click **OK**.
+
+#. When Prompted on the logon screen, set the cluster password as the password for the administrator user (admin), and click **Set Password**.
+
+   - **Password** - *<Cluster Password>*
 
 #. In the *Era’s Cluster* screen, enter the following in the indicated fields:
 
-   - **Name** EraCluster01
+   - **Name** - EraCluster
+   - **Description** - (Optional) Type a description of the Nutanix cluster.
+   - **Address** - Prism Element VIP
+   - **Prism Element Administrator** - admin
+   - **Password** - *<Cluster Password>*
 
-   - (Optional) **Description** Type a description of the Nutanix cluster.
+   .. note::
 
-   - **Address** Type in the Prism Element VIP.
+     It is not best practice to use the default administrative account for Era operations. In a production environment, it is therefore recommended to use a separate Prism Element user account with Nutanix cluster administrative privileges as Era service account.
 
-   - **Prism Element Administrator** Type the user name of the Prism Element user account with which you want Era to access the Nutanix cluster. (ex. admin)
-
-      .. note::
-
-         It is not best practice to use the default administrative account for Era operations. In a production environment, it is therefore recommended to use a separate Prism Element user account with Nutanix cluster administrative privileges as Era service account.
-
-   - **Password** Type the password of the Prism Element user account.
-
-   - Click **Next**.
+#. Click **Next**
 
       .. figure:: images/era1.png
 
-#. (Optional) Configure the SMTP server. If you do not configure this, remove the e-mail address listed within the *Sender's EMail* box.
+#. (Optional) Configure the SMTP server.
+
+    If you do not configure this, remove the e-mail address listed within the *Sender's Email* box.
 
 #. In the *Era Server's OS Time Zone* list, select a timezone, or leave the default UTC.
 
@@ -102,15 +104,21 @@ Configuration
 
    .. figure:: images/era3.png
 
-#. In the *Storage Container* screen, select the storage container that you want Era to use to provision new databases and database servers. Click **Next**.
+#. In the *Storage Container* screen, select the storage container that you want Era to use to provision new databases and database servers, and click **Next**.
+
+   - **Storage Container** - Era
 
    .. figure:: images/era4.png
 
-#. In the *Network Profile* screen, within the *VLAN* section, select the **Primary** VLAN from the drop-down list. Click **Next**.
+#. In the *Network Profile* screen, within the *VLAN* section, select the **Primary** VLAN from the drop-down list, and click **Next**.
+
+   Do NOT check the Manage IP Address Pool
 
    .. figure:: images/era5.png
 
-#. In the *Setup* screen, click **Get Started**. The *Getting Started* page describes how to register and provision databases in Era. You can also open the main menu and start using the product.
+#. Click **Get Started**.
+
+    The *Getting Started* page describes how to register and provision databases in Era. You can also open the main menu and start using the product.
 
    .. figure:: images/era6.png
 
@@ -177,209 +185,3 @@ Modifying Era VM Network Settings Post-Launch
 #. Launch the Era server prompt by typing `era-server`.
 
 #. The full command is `era_server set ip=<IP-address> gateway=<GATEWAY-ADDRESS> netmask=<NETMASK-IP> nameserver=<NAMESERVER>`
-
-Configuring Era for Microsoft SQL
-+++++++++++++++++++++++++++++++++
-
-Registering a database server with Era allows you to deploy databases to that resource, or to use that resource as the basis for a Software Profile.
-
-A SQL Server database server must meet the following requirements before you are able to register it with Era. Your SQL VM meets all of these criteria.
-
-   - A local user account or a domain user account with administrator privileges on the database server must be provided.
-   - Windows account or the SQL login account provided must be a member of sysadmin role.
-   - SQL Server instance must be running.
-   - Database files must not exist in boot drive.
-   - Database must be in an online state.
-   - Windows remote management (WinRM) must be enabled.
-
-#. From the dropdown, select **Databases**, then **Sources** from the left-hand menu.
-
-#. Click :fa:`plus` **Register > Microsoft SQL Server > Database**.
-
-   .. figure:: images/era8.png
-
-#. The *Register a SQL Server Database* window appears. In the *Database Server VM* screen, enter the following in the indicated fields:
-
-   - Select **Not registered** within *Database is on a Server VM that is:*.
-
-   - **IP Address or Name of VM** Select the VM you created in the :ref:`mssql_deploy` section.
-
-   - **Windows Administrator Name** Type the user name of the administrator account (ex. administrator@ntnxlab.local).
-
-   - **Windows Administrator Password** Type the password of the administrator account.
-
-   - **Instance** Era automatically discovers all the instances within a SQL server VM. In our case, there is only one instance named **MSSQLSERVER**.
-
-   - The *Connect to SQL Server Login* and *User Name* fields allow a choice of authentication between Windows Admin, and SQL Server user. Leave the default at **Windows Admin User**, and click **Next**.
-
-      .. figure:: images/era9.png
-
-#. In the *Database Server VM* screen, select the **Fiesta** database within the *Unregistered Databases* section. Click **Next**.
-
-   .. figure:: images/era11.png
-
-#. In the *Time Machine* screen, choose **DEFAULT_OOB_GOLD_SLA** within the *SLA* field.
-
-   .. figure:: images/era11a.png
-
-#. Click **Register**.
-
-#. In the *Status* column, click **Registering** to monitor the status, or choose **Operations** from the dropdown.
-
-#. The registration process will take approximately 5 minutes. In the meantime, proceed with the remaining steps in this section. Wait for the registration process to complete to proceed to the next section.
-
-   - From the dropdown menu, select **SLAs**. Era has five built-in SLAs (Gold, Silver, Bronze, Brass, and None). SLAs control however the database server is backed up. This can with a combination of Continuous Protection, Daily, Weekly Monthly and Quarterly protection intervals.
-
-   - From the dropdown menu, select **Profiles**.
-
-   Profiles pre-define resources and configurations, making it simple to consistently provision environments and reduce configuration sprawl. For example, Compute Profiles specifiy the size of the database server, including details such as vCPUs, cores per vCPU, and memory.
-
-Creating A Software Profile
-...........................
-
-Before additional SQL Server VMs can be provisioned, a *Software Profile* must first be created from the SQL server VM registered in the previous step. A software profile is a template that includes the SQL Server database and operating system. This template exists as a hidden, cloned disk image on your Nutanix cluster.
-
-#. From the dropdown, select **Profiles**, and then **Software** from the left-hand menu.
-
-#. Click :fa:`plus` **Create**, and then **Microsoft SQL Server**. Fill out the following fields:
-
-   - **Profile Name** - MSSQL_2016
-   - **Database Server** - Select your registered MSSQL VM
-
-#. Click **Next > Create**.
-
-#. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
-
-#. Once the profile creation completes successfully, return to Prism Central. Right click your *Win16SQL16* VM, and choose **Power Off Actions > Guest Shutdown**.
-
-Confirm the *Win16SQL16* is powered off before proceeding.
-
-Creating a New Microsoft SQL Database Server
-............................................
-
-You've completed all the one-time operations required to be able to provision any number of SQL Server VMs. Follow the steps below to provision a new database server.
-
-#. In **Era**, select **Databases** from the dropdown menu, and then **Sources** from the left-hand menu.
-
-#. Click :fa:`plus` **Provision > Microsoft SQL Server > Database**.
-
-   .. figure:: images/era12.png
-
-#. In the **Provision a Database** wizard, fill out the following fields with the *Database Server VM* screen to configure the Database Server:
-
-   - **Database Server VM** - Create New Server
-   - **Database Server VM Name** - FiestaDB_Prod
-   - **Software Profile** - MSSQL_2016
-   - **Compute Profile** - DEFAULT_OOB_COMPUTE
-   - **Network Profile** - DEFAULT_OOB_SQLSERVER_NETWORK
-   - Select **Join Domain**
-   - **Windows Domain Profile** - NTNXLAB
-   - **Administrator Password** - nutanix/4u
-   - **Instance Name** - MSSQLSERVER
-   - **Database Parameter Profile** - DEFAULT_SQLSERVER_INSTANCE_PARAMS
-   - **SQL Service Startup Account** - ntnxlab.local\\Administrator
-   - **SQL Service Startup Account Password** - nutanix/4u
-
-   .. figure:: images/era16.png
-
-   .. note::
-
-      A *Instance Name* is the name of the database server, not the hostname. The default is **MSSQLSERVER**. You can install multiple separate instances of MSSQL on the same server as long as they have different instance names.
-
-      *Server Collation* is a configuration setting that determines how the database engine should treat character data at the server, database, or column level. SQL Server includes a large set of collations for handling the language and regional differences that come with supporting users and applications in different parts of the world. A collation can also control case sensitivity on database. You can have different collations for each database on a single instance. The default collation is *SQL_Latin1_General_CP1_CI_AS* which breaks down to:
-
-         - *Latin1* makes the server treat strings using charset latin 1, basically *ASCII*
-         - *CP1* stands for Code Page 1252. CP1252 is  single-byte character encoding of the Latin alphabet, used by default in the legacy components of Microsoft Windows for English and some other Western languages
-         - *CI* indicates case insensitive comparisons, meaning *ABC* would equal *abc*
-         - *AS* indicates accent sensitive, meaning *ü* does not equal *u*
-
-      *Database Parameter Profiles* define the minimum server memory SQL Server should start with, as well as the maximum amount of memory SQL server will use. By default, it is set high enough that SQL Server can use all available server memory. You can also enable contained databases feature which will isolate the database from others on the instance for authentication.
-
-#. Click **Next**, and fill out the following fields within the *Database* screen:
-
-   - **Database Name** - FiestaDB_Prod
-   - **Database Parameter Profile** - DEFAULT_SQLSERVER_DATABASE_PARAMS
-
-   .. figure:: images/era17.png
-
-   .. note::
-
-      Common applications for pre/post-installation scripts include:
-
-      - Data masking scripts.
-      - Register the database with DB monitoring solution.
-      - Scripts to update DNS/IPAM.
-      - Scripts to automate application setup, such as app-level cloning for Oracle PeopleSoft.
-
-#. Click **Next**, and fill out the following fields within the *Time Machine* screen:
-
-      .. note::
-
-         The default *BRASS* SLA does not include Continuous Protection snapshots.
-
-   - **SLA** - DEFAULT_OOB_GOLD_SLA
-
-   .. figure:: images/era18.png
-
-#. Click **Provision** to begin creating your new database server VM and *FiestaDB_Prod* database.
-
-#. Select **Operations** from the dropdown menu to monitor the *Provision* process. This process should take approximately 20 minutes.
-
-   .. figure:: images/era19.png
-
-#. Remote Desktop into your *FiestaDB_Prod* VM using the *Domain* Administrator (i.e. ntnxlab.local\\administrator or administrator@ntnxlab.local), and *nutanix/4u* password.
-
-#. Launch **SQL Server Management Studio**.
-
-#. Click **Connect**.
-
-#. Click on **File > Open > File**. Choose the *FiestaDB-MSSQL.sql* file you previously downloaded to the desktop, and click **Open**.
-
-#. Confirm you have *FiestaDB_Prod* selected, and click **Execute**. This will create the necessary data within the *FiestaDB_Prod* database for use in the proceeding steps.
-
-   .. figure:: images/era10.png
-
-Deploy Production Web Server
-++++++++++++++++++++++++++++
-
-This exercise will walk you through creating a web server configured for your *FiestaWEB_Prod* MSSQL server.
-
-#. In **Prism Central**, select :fa:`bars` **Virtual Infrastructure > VMs**.
-
-#. Determine the IP address of your *FiestaDB_Prod* VM.
-
-#. Click **Create VM** and fill out the following fields:
-
-   - **Name** - FiestaWEB_Prod
-   - **vCPUs** - 2
-   - **Number of Cores Per vCPU** - 1
-   - **Memory** - 4 GiB
-   - Click :fa:`plus` **Add New Disk**
-
-      - **Type** - Disk
-      - **Operation** - Clone from Image Service
-      - **Bus Type** - SCSI
-      - **Image** - CentOS_7_cloud.qcow2
-      - Click **Add**
-
-   - Click :fa:`plus` **Add New NIC**
-
-      - **Network Name** - Primary
-      - Click **Add**
-
-   - Select **Custom Script**
-   - Select **Type or Paste Script**. Click the icon in the upper right-hand corner of the below window to copy the script to your clipboard. You may then paste the following *cloud-config* script:
-
-      .. literalinclude:: webserver.cloudconfig
-       :linenos:
-       :language: YAML
-
-   .. warning::
-
-      Before proceeding, modify the **YOUR-FIESTADB_PROD-VM-IP-ADDRESS** portion within line 105 in the cloud-config script with the IP address from your *FiestaDB_Prod* VM. No other modifications are necessary.
-
-      Example: `- sed -i 's/REPLACE_DB_HOST_ADDRESS/10.42.69.85/g' /home/centos/Fiesta/config/config.js`
-
-#. Once the VM has completed deploying, open `http://<FIESTAWEB_PROD-IP-ADDRESS>:5001`_ in a new browser tab to access the *Fiesta* application.
-
-Excellent! You've provisioned your first database from a MS SQL profile. Keep going to see how to create a database clone either using the UI: :ref:`basic_clone_ui` or via APIs: :ref:`basic_clone_api`. Maybe you'd like to skip to creating an Always-On Availability Group (AAG)? :ref:`advanced_aag`

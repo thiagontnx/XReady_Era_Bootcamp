@@ -4,82 +4,14 @@
 Era Deployment
 --------------
 
-The below will guide you through the necessary steps to initially deploy and configure Era, along with post-installation steps related to Microsoft SQL Server.
-
-**Prerequisites:** Completion of :ref:`mssql_deploy`
-
-**(Optional) Pre-requisite:** N/A
+The below will guide you through the necessary steps to initially deploy and configure Era..
 
 **Expected Module Duration:** 90 minutes
 
-**Covered Test IDs:** N/A
-
-This workshop includes detailed instructions to:
-   - Deploy and configure Era 2.0
-   - Clone SQL Server database - using both UI and API methods
-   - Create and configure a highly-available database environment
-   - Apply patches to both single, and clustered database environments
-
-Network Configuration
-+++++++++++++++++++++
-
-Era requires the *Manage IP address pool* option enabled on a VLAN for certain features. If you do not intend on completing the :ref:`advanced_aag`, you may skip this section.
-
-#. Within Prism, click on **Settings** from the dropdown, and then **Network Configuration** from the left-hand menu.
-
-#. Click :fa:`plus` **Create Network**.
-
-#. Enter **Era** within the *Network Name* field, and the VLAN within the *VLAN ID* field.
-
-   - If a secondary VLAN is available, use those values (i.e. if you are using the HPOC).
-   - If only a single VLAN is available, you may adjust the end value for IP Pool on the *Primary* VLAN (ex. from 125 down to 100, and use 101 to 125 on VLAN 0 for this purpose).
-
-#. Click **Save**.
 
 Installation
 ++++++++++++
 
-#. Download the **Era Install for AHV** image file from the `Era Downloads section - Nutanix Support Portal <https://portal.nutanix.com/page/downloads?product=era>`_ either click the **Download** button associated with the latest version of *Era Install for AHV*, or the :fa: `ellipsis-v` next to it, and choose **Copy Download Link**.
-
-#. In **Prism Central**, select :fa:`bars` **Virtual Infrastructure > Images**.
-
-#. Click **Add Image**.
-
-#. Under *Image Source*, choose one of the following:
-
-   - Choose **Image File** > :fa:`plus` **Add File**. Browse to the Era .QCOW2 file, select it, and click **Open**. Click **Next > Save**.
-
-      **OR**
-
-   - Choose **URL**, paste the URL (which you copied via *Copy Download Link* above), and click **Upload File**. Click **Next > Save**.
-
-#. Wait until the **Create Image** task completes before proceeding.
-
-.. #. In the *Create Image* dialog box, do the following in the indicated fields:
-..
-..    - **Name**. Type a name of the image (ex. Era)
-..
-..    - **Image Type**. Select **Disk** from the drop-down list.
-..
-..    - **Storage Container**. Select the **default** storage container to install Era.
-..
-..    - **Choose one of the following**:
-..
-..       - Within *Image Source*, click **Upload a file > Choose File**. Browse to the Disk image for Era, and click **Open**.
-..
-..          .. figure:: images/FIX IMAGE
-..
-..       **OR**
-..
-..       - Click :fa:`dot-circle` **From URL**, and paste the download link you previously copied from the Nutanix Portal.
-..
-..          .. figure:: images/FIX IMAGE
-..
-..          .. note::
-..
-..             Verify that the *Image Type* is **Disk**.
-..
-..    - Click **Save**.
 
 #. Select :fa:`bars` **Virtual Infrastructure > VMs**. and then click **Create VM**.
 

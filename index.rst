@@ -71,7 +71,7 @@
 Getting Started
 ---------------
 
-.. figure:: images/xready_logo.png
+.. figure:: images/XReady_LogoMark_Full-Colour.png
     :align: center
     :alt: XReady Logo
 

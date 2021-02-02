@@ -9,8 +9,8 @@ The below will guide you through the necessary steps to initially deploy and con
 **Expected Module Duration:** 90 minutes
 
 
-Installation
-++++++++++++
+Era VM Deployment
++++++++++++++++++
 
 
 #. Select :fa:`bars` **Virtual Infrastructure > VMs**. and then click **Create VM**.
@@ -59,8 +59,17 @@ Installation
 
       If you assigned a static IP address to the Era VM on a VLAN that has a DHCP server (ex. the *Primary* VLAN on the HPOC), Prism Element first assigns an IP address to the Era VM by using DHCP. Wait for one or two minutes and refresh the Prism Element page to verify if the static IP address you specified has been assigned to the VM.
 
-Configuration
-+++++++++++++
+Configure UI Timeout
+....................
+
+#. Click on the **admin** dropdown at the top right, and choose **Profile**.
+
+#. Set the **Timeout** setting to **Never**. This will help avoid being logged out unexpectedly during your labs.
+
+#. Click **Save**.
+
+Era Configuration
++++++++++++++++++
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs > List**.
 
@@ -79,7 +88,7 @@ Configuration
 #. In the **Era’s Cluster** screen, enter the following in the indicated fields:
 
    - **Name** - EraCluster
-   - **Description** - (Optional) Type a description of the Nutanix cluster.
+   - **Description** - (Optional) Add description of the Nutanix cluster.
    - **Address** - Prism Element VIP
    - **Prism Element Administrator** - admin
    - **Password** - *<Cluster Password>*
@@ -140,30 +149,130 @@ Windows Domain Configuration
    - **Name** NTNXLAB
    - **Domain to Join (FQDN)** ntnxlab.local
 
-#. In the **Domain Account with Permission to Join Computer to the Domain** section, enter the following in the indicated fields:
-
-   - **Username** ntnxlab.local\\administrators
+   Domain Account with Permission to Join Computer to the Domain
+   - **Username** Administrator@ntnxlab.local"
    - **Password** nutanix/4u
 
-#. In the **SQL Service Startup Account** section, deselect **Specify Startup Account in Profile**.
+   SQL Service Startup Account
+   - **Specify Startup Account in Profile** - Checked
+   - **Username** Administrator@ntnxlab.local"
+   - **Password** nutanix/4u
 
-#. In the **Era Worker Service Account** section, enter the following in the indicated fields:
-
-   - **Username** ntnxlab.local\\administrators
+   Era Worker Service Account
+   - **Username** Administrator@ntnxlab.local"
    - **Password** nutanix/4u
 
    .. figure:: images/era15.png
 
-#. Click **Create**.
+   .. note::
 
-(Optional) Configure UI Timeout
-....................
+     Hit the **API Equivalent** button to see what the REST API Call would look like.
 
-#. Click on the **admin** dropdown at the top right, and choose **Profile**.
+#. Click **Create
 
-#. Set the **Timeout** setting to **Never**. This will help avoid being logged out unexpectedly during your POC.
+Network Profile Configuration
+............................
 
-#. Click **Save**.
+#. From the dropdown, choose **Profiles**.
+
+#. Select **Network** from the left-hand menu.
+
+Create MSSQL Network Profile
+============================
+
+#. Click :fa:`plus` **Create > SQLServer > Database Server VMs**
+
+#. Enter the Following Information:
+
+   - **Name** - Primary-MSSQL-NETWORK
+   - **Description** - Add a description of the Profile
+   - **Nutanix Cluster** - EraCluster
+   - **Public Service VLAN** - Primary
+
+   .. image:: images/mssql_network_profile.png
+
+#. Click **Create**
+
+Create Oracle Network Profile
+============================
+
+#. Click :fa:`plus` **Create > Oracle > Database Server VMs**
+
+#. Enter the Following Information:
+
+   - **Name** - Primary_ORACLE_NETWORK
+   - **Description** - Add a description of the Profile
+   - **Nutanix Cluster** - EraCluster
+   - **Public Service VLAN** - Primary
+
+   .. image:: images/oracle_network_profile.png
+
+#. Click **Create**
+
+Conpute Profile Configuration
+............................
+
+#. From the dropdown, choose **Profiles**.
+
+#. Select **Compute** from the left-hand menu.
+
+Create Oracle Small Compute Profile
+===================================
+
+#. Click :fa:`plus` **Create**
+
+#. Enter the Following Information:
+
+   - **Name** - ORACLE_SMALL
+   - **Description** - Add a description of the Profile
+   - **vCPUs** - 1
+   - **Cores per CPU** - 4
+   - **Memory (GiB)** - 8
+
+   .. image:: images/oracle_small_compute_profile.png
+
+#. Click **Create**
+
+Create Custom Extra Small Compute Profile
+===================================
+
+#. Click :fa:`plus` **Create**
+
+#. Enter the Following Information:
+
+   - **Name** - CUSTOM_EXTRA_SMALL
+   - **Description** - Add a description of the Profile
+   - **vCPUs** - 1
+   - **Cores per CPU** - 2
+   - **Memory (GiB)** - 4
+
+#. Click **Create**
+
+Database Parameters Profile Configuration
+.......................................
+
+#. From the dropdown, choose **Profiles**.
+
+#. Select **Database Parameters** from the left-hand menu.
+
+#. Click :fa:`plus` **Create > Oracle**, Click **Next**
+
+#. Enter the Following Information:
+
+   - **Name** - ORACLE_SMALL_PARAMS
+   - **Description** - Add a description of the Profile
+   - **Block Size** - 8
+   - **Default Language** - AMERICA
+   - **Default Territory** - AMERICA
+   - **PGA (MiB)** - Leave Blank
+   - **Processes** - 300
+   - **SGA (MiB)** - Leave Blank
+   - **Shared Servers** - 0
+   - **Temp Tablespace (MiB)** - 256
+   - **Total Memory (MiB)** - 4096
+   - **Undo Tablespace (MiB)** - 256
+
+#. Click **Create**
 
 Modifying Era VM Network Settings Post-Launch
 .............................................

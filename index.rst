@@ -1,6 +1,16 @@
 .. title:: Databases: Era Combo Bootcamp
 
 .. toctree::
+  :maxdepth: 2
+  :caption: Bootcamps HowTo
+  :name: _howto
+  :hidden:
+
+  bootcamps_getting_started/bootcamps_getting_started
+  se_reserve/se_reserve
+  create/create
+
+.. toctree::
    :maxdepth: 2
    :caption: Era Lab Setup
    :name: _dbs
@@ -60,6 +70,10 @@
 ---------------
 Getting Started
 ---------------
+
+.. figure:: images/xready_logo.png
+    :align: center
+    :alt: XReady Logo
 
 Welcome to the Databases bootcamp. This bootcamp is meant to provide you with first hand experience in why Nutanix is an ideal platform for Database workloads.
 

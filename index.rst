@@ -25,7 +25,7 @@
    :name: _dbs
    :hidden:
 
-   deploy_mssql/deploy_mssql
+   configure_mssql/configure_mssql
    admin_mssqldb/admin_mssqldb
    deploy_mssql_era/deploy_mssql_era
    webtier/webtier
@@ -37,7 +37,7 @@
    :name: _dbs
    :hidden:
 
-   deploy_oracle/deploy_oracle
+   configure_oracle/configure_oracle
    deploy_oracle_era/deploy_oracle_era
    admin_oracle/admin_oracle
    patching_oracle/patching_oracle

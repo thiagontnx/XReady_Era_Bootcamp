@@ -150,17 +150,17 @@ Windows Domain Configuration
    - **Domain to Join (FQDN)** ntnxlab.local
 
    Domain Account with Permission to Join Computer to the Domain
-   - **Username** Administrator@ntnxlab.local"
-   - **Password** nutanix/4u
+     - **Username** Administrator@ntnxlab.local"
+     - **Password** nutanix/4u
 
    SQL Service Startup Account
-   - **Specify Startup Account in Profile** - Checked
-   - **Username** Administrator@ntnxlab.local"
-   - **Password** nutanix/4u
+     - **Specify Startup Account in Profile** - Checked
+     - **Username** Administrator@ntnxlab.local"
+     - **Password** nutanix/4u
 
    Era Worker Service Account
-   - **Username** Administrator@ntnxlab.local"
-   - **Password** nutanix/4u
+       - **Username** Administrator@ntnxlab.local"
+       - **Password** nutanix/4u
 
    .. figure:: images/era15.png
 

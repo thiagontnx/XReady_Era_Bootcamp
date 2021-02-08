@@ -27,12 +27,12 @@ In this lab you will leverage multiple pre-built Calm Blueprints to provision yo
    - Within *Infrastructure* section, click **Select Provider > Nutanix**
    - Click **Select Clusters & Subnets**
    - Select *Your Assigned Cluster* from the dropdown
-   - Within *Subnets for cluster...*, click **Primary**, **Secondary**, and then click **Confirm**
+   - Within *Subnets for cluster...*, click **Primary**, and then click **Confirm**
    - Mark **Primary** as the default network by clicking the :fa:`star`
 
    .. figure:: images/3.png
 
-#. Click **Save & Configure Environment**.
+#. Proceed to the next section.
 
 Provision Fiesta Web Tier
 +++++++++++++++++++++++++
@@ -53,7 +53,7 @@ In this section you'll deploy the web tier of the application and connect it to 
 
    .. figure:: images/31.png
 
-#. In order to launch the blueprint, you must first assign a network to the VM. Select the **NodeReact** Service, and in the *VM Configuration* section on the right, within the *NETWORK ADAPTERS (NICS)* section, select **Secondary** as the **NIC 1** network.
+#. In order to launch the blueprint, you must first assign a network to the VM. Select the **NodeReact** Service, and in the *VM Configuration* section on the right, within the *NETWORK ADAPTERS (NICS)* section, select **Primary** as the **NIC 1** network.
 
    .. figure:: images/32a.png
 

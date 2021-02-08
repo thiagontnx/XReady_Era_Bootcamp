@@ -59,15 +59,6 @@ Era VM Deployment
 
       If you assigned a static IP address to the Era VM on a VLAN that has a DHCP server (ex. the *Primary* VLAN on the HPOC), Prism Element first assigns an IP address to the Era VM by using DHCP. Wait for one or two minutes and refresh the Prism Element page to verify if the static IP address you specified has been assigned to the VM.
 
-Configure UI Timeout
-....................
-
-#. Click on the **admin** dropdown at the top right, and choose **Profile**.
-
-#. Set the **Timeout** setting to **Never**. This will help avoid being logged out unexpectedly during your labs.
-
-#. Click **Save**.
-
 Era Configuration
 +++++++++++++++++
 
@@ -134,6 +125,15 @@ Era Configuration
 #. In the **Getting Started** screen, select the **Yes** button.
 
    .. figure:: images/era7.png
+
+Configure UI Timeout
+....................
+
+#. Click on the **admin** dropdown at the top right, and choose **Profile**.
+
+#. Set the **Timeout** setting to **Never**. This will help avoid being logged out unexpectedly during your labs.
+
+#. Click **Save**.
 
 Windows Domain Configuration
 ............................

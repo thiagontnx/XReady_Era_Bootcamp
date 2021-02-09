@@ -124,7 +124,7 @@ Agenda
 Era with MSSQL Track
 ....................
 
-- Deploy MSSQL
+- Configure MSSQL
 - Admin MSSQL with Era
 - Deploy MSSQL with Era
 - Patching MSSQL
@@ -132,12 +132,18 @@ Era with MSSQL Track
 Era with oracle Track
 .....................
 
-- Deploy Oracle
+- Configure Oracle
 - Deploy Oracle with Era
 - Patching Oracle with Era
 - Admin Oracle with Era
 
+Assessment
+...........
+
+Click here to get back to XReady to do the `Assessment <https://www.nutanixuniversity.com/sales/lms/index.php?r=course/deeplink&course_id=1321&generated_by=20160&hash=73cb5f5992f26dea84ca08a7d3ba2e478d219a2e>`_
+
 Optional labs:
+..............
 
 - Monitoring Applications with Prism Ultimate
 - Era API

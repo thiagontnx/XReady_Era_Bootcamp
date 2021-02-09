@@ -37,7 +37,7 @@ Software Profile Versions are created in Era to support patching of SQL Server d
    - **User Name** - Refer to **Username** in :ref:`clusterdetails` (ex. *USERXX*)
    - **Password** - Refer to **Password** in :ref:`clusterdetails`
 
-      .. figure:: images/2.png MAKE NEW SS
+      .. figure:: images/2.png
 
    - Wait for the upload to complete, and then click **Create**.
    This should take approximately 3 minutes to complete.

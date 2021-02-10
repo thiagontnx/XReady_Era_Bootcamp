@@ -1,4 +1,4 @@
-.. title:: Databases: Era Combo Bootcamp
+.. title:: XReady Enablement Bootcamp - Era
 
 .. toctree::
   :maxdepth: 2

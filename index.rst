@@ -37,7 +37,7 @@
    :name: _dbs
    :hidden:
 
-   configure_oracle/configure_oracle
+   deploy_oracle/deploy_oracle
    deploy_oracle_era/deploy_oracle_era
    admin_oracle/admin_oracle
    patching_oracle/patching_oracle

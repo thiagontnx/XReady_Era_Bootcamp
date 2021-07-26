@@ -20,7 +20,7 @@ Source Microsoft SQL VM
    - **Username** - Administrator
    - **Password** - Nutanix/4u
 
-#. Disable Windows Firewall for all networks.
+#. Disable Windows Firewall by opening **Control Panel > System and Security > Windows Defender Firewall**.
 
 #. Open SQL Server Managment Studio (SSMS), choose **Windows Authentication** from the *Authentication* dropdown, and click **Connect**.
 

@@ -20,13 +20,18 @@ Source Microsoft SQL VM
    - **Username** - Administrator
    - **Password** - Nutanix/4u
 
-#. Cancel *Shutdown Event Tracker*.
-
 #. Disable Windows Firewall for all networks.
 
 #. Open SQL Server Managment Studio (SSMS), choose **Windows Authentication** from the *Authentication* dropdown, and click **Connect**.
 
 #. Verify you can browse the *SampleDB* database.
+
+#. Gracefully restart your *UserXX*\ **-MSSQLSourceVM** VM.
+
+.. note::
+
+   If creating a profile from a server not gracefully shut down, it may be corrupt or may not provision successfully. Please ensure that *UserXX*\ **-MSSQLSourceVM** had a clean shutdown, and clean startup before registering profile to Era.
+
 
 ..  Clone Source MSSQL VM
   +++++++++++++++++++++
@@ -102,7 +107,7 @@ Era is distributed as a virtual appliance that can be installed on either AHV or
 
 #. From the dropdown menu, select **SLAs**.
 
-   Era has five built-in SLAs: Gold, Silver, Bronze, Brass, and Zero. SLAs control how the database server is backed up, or in the case of the *Zero* SLA, excluded from being backed up entirely. Backups can be configured with a combination of Continuous Protection, Daily, Weekly, Monthly, and Quarterly protection intervals.
+   Era has five built-in SLAs: Gold, Silver, Bronze, Brass, and NONE. SLAs control how the database server is backed up, or in the case of the *Zero* SLA, excluded from being backed up entirely. Backups can be configured with a combination of Continuous Protection, Daily, Weekly, Monthly, and Quarterly protection intervals.
 
 #. From the dropdown menu, select **Profiles**.
 
@@ -200,7 +205,3 @@ Before additional SQL Server VMs can be provisioned, a Software Profile must fir
 #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 2 minutes.
 
    .. figure:: images/16.png
-
-   .. note::
-
-       If creating a profile from a server not gracefully shut down, it may be corrupt or may not provision successfully. Please ensure that *UserXX*\ **-MSSQLSourceVM** had a clean shutdown, and clean startup before registering profile to Era.

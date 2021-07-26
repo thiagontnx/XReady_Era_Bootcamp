@@ -32,9 +32,11 @@ You've completed all the one time operations required to be able to provision an
    - **Instance Name** - MSSQLSERVER
    - **Server Collation** - (Leave Default)
    - **Database Parameter Profile** - DEFAULT_SQLSERVER_INSTANCE_PARAMS
-   - **SQL Server Authentication Mode** - Windows Authentication
+   - **SQL Server Authentication Mode** - Mixed Authentication
+   - **SQL Server User** - sa
+   - **Password** - Nutanix/1234
 
-   .. figure:: images/19.png
+   .. figure:: images/provisionsql.png
 
    .. note::
 
@@ -131,6 +133,12 @@ Migrating Fiesta App Data
 In this exercise you will import data directly into your database from a backup exported from another database. While this is a suitable method for migrating data, it potentially involved downtime for an application, or our database potentially not having the very latest data.
 
 Another approach could involve adding your new Era database to an existing database cluster (AlwaysOn Availability Group - AAG) and having it replicate to your Era provisioned database. This kind of application-level synchronous or asynchronous replication can be used to provide additional benefit to using Era, such as cloning and Time Machine to databases whose production instances run on bare metal and/or non-Nutanix infrastructure.
+
+#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs** and take note of the IP address of your *Initials*\ **-MSSQL2**.
+
+#. Using Microsoft Remote Desktop (RDP), login to your *Initials*\ **-MSSQL2**
+
+#. Disable Windows Firewall by opening **Control Panel > System and Security > Windows Defender Firewall**.
 
 #. From your *Initials*\ **-MSSQL2** session, launch **Microsoft SQL Server Management Studio**, and click **Connect** to authenticate as the currently logged in user.
 

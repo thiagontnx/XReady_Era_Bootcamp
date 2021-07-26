@@ -45,21 +45,21 @@ Prism Ultimate licensing includes the SQL Server monitoring pack, which allows I
 
 #. Click on the IP Address of the server, under the *Name* column to observe the information being collected. The *Summary* screen is now shown.
 
-      .. figure:: images/appmonitoring7.png
+      .. figure:: images/summary.png
 
 #. In addition to the *Summary* view, click **Queries** from the left-hand menu to observe SQL Server queries, sorted by highest average execution time, providing greater insight into the application itself.
 
-      .. figure:: images/sqlqueries.png
+      .. figure:: images/queries.png
 
 #. Click **Metrics** from the left-hand menu. As SQL monitoring has recently been setup, it will take time for these metrics to full populate. In the example below, we can see that in the *CPU Utilization* chart anomalies are generated based on machine learned baselines, just as Prism Pro provides on the VM level.
 
-      .. figure:: images/sqlcharts.png
+      .. figure:: images/metrics.png
 
    Next, we will create an alert policy for the *Buffer Pool Size*, and a playbook based on that alert, to extend the simplicity of our powerful X-Play automation onto applications as well.
 
 #. Scroll down to the **Buffer Pool Size** metric (typically 3rd from the bottom, right column), click on **Actions**, and then choose **Alert Settings**.
 
-      .. figure:: images/bufferalert1.png
+      .. figure:: images/alertsett.png
 
    We will be stressing the SQL Server in a later step using an application called *HammerDB*. The stress will cause the metric to increase after a short delay. We will keep the alert threshold at a fair number so to get the alert policy raised as soon as possible for our example.
 
@@ -81,7 +81,7 @@ Prism Ultimate licensing includes the SQL Server monitoring pack, which allows I
 
 #. From the *Select an Alert Policy* dropdown, select *Initials*\ **- MSSQL Buffer Pool Size**.
 
-      .. figure:: images/sqlplay1.png
+      .. figure:: images/trigger.png
 
    The built-in PowerShell script requires our MSSQL VM IP address, which we will obtain by creating *Action* entries. The first one will be to the lookup the VM IP.
 
@@ -118,7 +118,7 @@ Prism Ultimate licensing includes the SQL Server monitoring pack, which allows I
 
 #. Click **Select** on the *String Parser* action.
 
-#. Directly to the right of *String Parser*, click the :fa:`pencil`, enter **Extract VM IP** in the *Add Description* field, and click **Save*.
+#. Directly to the right of *String Parser*, click the :fa:`pencil`, enter **Extract VM IP** in the *Add Description* field, and click **Save**.
 
 #. Directly below the *String to Parse* field, click **Parameters**, and select **Response Body** within the *Previous Action* column.
 
@@ -128,7 +128,7 @@ Prism Ultimate licensing includes the SQL Server monitoring pack, which allows I
 
       .. code-block:: bash
 
-      $.group_results[0].entity_results[0].data[0].values[0].values[0]
+            $.group_results[0].entity_results[0].data[0].values[0].values[0]
 
       .. figure:: images/sqlplay5.png
 
@@ -136,7 +136,7 @@ Prism Ultimate licensing includes the SQL Server monitoring pack, which allows I
 
 #. Click **Select** on the *IP Address Powershell* action.
 
-#. Directly to the right of *IP Address Powershell*, click the :fa:`pencil`, enter **Upload to Google Drive** in the *Add Description* field, and click **Save*.
+#. Directly to the right of *IP Address Powershell*, click the :fa:`pencil`, enter **Upload to Google Drive** in the *Add Description* field, and click **Save**.
 
 #. Directly below the *IP Address/Hostname* field, click **Parameters**, and select **Parsed String** within the *Previous Action* column. Fill out the following fields as indicated:
 
